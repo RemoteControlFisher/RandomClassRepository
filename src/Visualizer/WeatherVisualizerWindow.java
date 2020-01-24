@@ -14,6 +14,9 @@ public class WeatherVisualizerWindow {
 	
 	private JFrame myWindow;
 
+	/**
+	 * Creates a new window which is able to display weather data from the vue weather system.
+	 */
 	public WeatherVisualizerWindow() {
 		//Will later accept inputs for whatever event generators and data systems we use in the project, but currently it has no inputs.
 		myWindow = new JFrame();
@@ -21,20 +24,27 @@ public class WeatherVisualizerWindow {
 		myWindow.setTitle("Thermostat for Outside.");
 	}
 	
+	/**
+	 * Opens the window and configures it with its default layout..
+	 */
 	public void display() {
 		// TODO Auto-generated method stub
 		JMenuBar myBar = new JMenuBar();
-		JPanel myUpperFrame = new JPanel();
+		JPanel myUpperFrame = new UpperPanelWindow();
 		JTabbedPane myLowerFrame = new JTabbedPane();
 		initializeMenuBar(myBar);
-		initializeUpperFrame(myUpperFrame);
+		//initializeUpperFrame(myUpperFrame);
 		addGraphicsTabs(myLowerFrame);
 		myWindow.setJMenuBar(myBar);
-		myWindow.add(myUpperFrame, BorderLayout.NORTH);
+		myWindow.add(myUpperFrame, BorderLayout.CENTER);
 		myWindow.add(myLowerFrame, BorderLayout.SOUTH);
 		myWindow.setVisible(true);
 	}
 
+	/** 
+	 * Sets the window to have its various graphical interfaces for displaying long term weather data.
+	 * @param myLowerFrame The tabbed pane to be configured.
+	 */
 	private void addGraphicsTabs(JTabbedPane myLowerFrame) {
 		for(int i = 0; i < 8; i++) {
 			myLowerFrame.add("Graphic Frame #" + i, new JPanel());
@@ -44,12 +54,7 @@ public class WeatherVisualizerWindow {
 		
 	}
 
-	private void initializeUpperFrame(JPanel myUpperFrame) {
-		// TODO Auto-generated method stub
-		myUpperFrame.add(new JLabel("General Information Goes Here"));
-		// This panel will be configured to give the live feed of the current weather attributes.
-	}
-
+	/**Sets up the menu bar with the options menus and buttons.*/
 	private void initializeMenuBar(JMenuBar myBar) {
 		// TODO Auto-generated method stub
 		// Contains various configuration buttons (Start/stop, select display units, ETC ETC.)
